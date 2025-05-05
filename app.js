@@ -94,7 +94,7 @@ registerServiceWorker("sw.js").then(() => {
 
     if (root) {
         root.innerHTML = `
-        <img src="/api/cog.png">
-        <a href="/api/cog.png" download>Download</a>`;
+        <img src="api/cog.png">
+        <a href="api/cog.png" download>Download</a>`;
     }
 });
