@@ -1,5 +1,5 @@
 //@ts-check
-const SW_VERSION = "1.0.0";
+const SW_VERSION = "1.0.1";
 const CACHE_KEY = "CACHE_" + SW_VERSION;
 const TIMEOUT = 1 * 30 * 1000;
 
@@ -83,7 +83,7 @@ self.addEventListener("message", (event) => {
 self.addEventListener("fetch", function (event) {
     const url = new URL(event.request.url);
 
-    if (url.pathname.startsWith("/api/")) {
+    if (url.pathname.startsWith("/service-worker-bearer-token/api/")) {
         log("intercepted", event.request.url);
 
         event.respondWith(
