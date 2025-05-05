@@ -68,7 +68,12 @@ function setupCommunication(registration) {
     }
 }
 
-async function registerServiceWorker() {
+/**
+ * 
+ * @param {string} swPath 
+ * @returns 
+ */
+async function registerServiceWorker(swPath) {
     worker.addEventListener("controllerchange", () => {
         log("Service Worker changed");
     });
@@ -78,13 +83,13 @@ async function registerServiceWorker() {
         registrations.map((registration) => registration.unregister()),
     );
 
-    const registration = await worker.register("/sw.js");
+    const registration = await worker.register(swPath);
     await registration.update();
 
     return setupCommunication(registration);
 }
 
-registerServiceWorker().then(() => {
+registerServiceWorker("sw.js").then(() => {
     const root = document.getElementById("root");
 
     if (root) {
